@@ -1,6 +1,7 @@
 const squeezeForm = document.querySelector('form');
+const API_URL = 'http://localhost:1337/squeeze';
 
-squeezeForm.addEventListener('submit', (event) => {
+squeezeForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     console.log('Form submitted');
 
@@ -12,8 +13,18 @@ squeezeForm.addEventListener('submit', (event) => {
         title,
         description,
     }
-
-    console.log(squeeze);
-
     squeezeForm.reset();
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(squeeze),
+        headers: {
+            'Content-type': 'application/json'
+        },
+    };
+
+    const response = await fetch(API_URL, options);
+    const answer = response.json();
+    console.log(answer);
+
 })
