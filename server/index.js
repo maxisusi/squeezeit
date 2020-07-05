@@ -24,7 +24,7 @@ app.post('/squeeze', (req, res) => {
 
     const data = req.body;
 
-    if(isValidData(data)) {
+    if (isValidData(data)) {
         res.status(200).send();
 
         const squeeze = {
@@ -33,16 +33,34 @@ app.post('/squeeze', (req, res) => {
             status: 'default',
             dateCreated: new Date(),
         }
-        
+
         database.insert(squeeze);
 
     } else {
         res.status(422).send();
 
     }
+
+    function isValidData(data) {
+        return data.title && data.title.toString().trim() &&
+            data.description && data.description.toString().trim();
+    }
+});
+
+app.get('/get-squeeze', (req, res) => {
+
+    database.find({}, (err, data) => {
+        if (err) {
+            res.status(400);
+            res.end();
+            return;
+        }
+
+        else {
+            res.status(200);
+            res.json(data);
+        }
+    })
 })
 
-function isValidData(data) {
-    return data.title && data.title.toString().trim() &&
-    data.description && data.description.toString().trim();
-}
+
