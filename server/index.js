@@ -49,7 +49,7 @@ app.post('/squeeze', (req, res) => {
 
 app.get('/get-squeeze', (req, res) => {
 
-    database.find({}, (err, data) => {
+    database.find({status: 'default'}, (err, data) => {
         if (err) {
             res.status(400);
             res.end();
@@ -61,6 +61,30 @@ app.get('/get-squeeze', (req, res) => {
             res.json(data);
         }
     })
+})
+
+
+app.post('/post-squeeze', (req, res) => {
+    console.log(req.body);
+    console.log(req.body.idea);
+    console.log(req.body._id);
+    
+    database.update({_id: req.body._id}, {$set: {status: req.body.status}}, (err, data) => {
+        if (err) {
+            res.status(400);
+
+            return;
+        }
+
+        else {
+            res.json(data);
+            res.status(200);
+        }
+    })
+
+
+
+
 })
 
 
