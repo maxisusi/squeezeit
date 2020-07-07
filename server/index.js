@@ -20,6 +20,38 @@ app.get('/', (req, res) => {
     });
 })
 
+
+app.get('/get-liked-squeeze', (req, res) => {
+    console.log('i have a request')
+    database.find({status: 'accepted'}, (err, data) => {
+        if (err) {
+            res.status(400);
+            return;
+        }
+        else {
+            res.status(200);
+            res.json(data);
+            console.log(data);
+        }
+
+    })
+})
+app.get('/get-disliked-squeeze', (req, res) => {
+    console.log('i have a request')
+    database.find({status: 'rejected'}, (err, data) => {
+        if (err) {
+            res.status(400);
+            return;
+        }
+        else {
+            res.status(200);
+            res.json(data);
+            console.log(data);
+        }
+
+    })
+})
+
 app.post('/squeeze', (req, res) => {
 
     const data = req.body;
@@ -49,7 +81,7 @@ app.post('/squeeze', (req, res) => {
 
 app.get('/get-squeeze', (req, res) => {
 
-    database.find({status: 'default'}, (err, data) => {
+    database.find({ status: 'default' }, (err, data) => {
         if (err) {
             res.status(400);
             res.end();
@@ -68,11 +100,10 @@ app.post('/post-squeeze', (req, res) => {
     console.log(req.body);
     console.log(req.body.idea);
     console.log(req.body._id);
-    
-    database.update({_id: req.body._id}, {$set: {status: req.body.status}}, (err, data) => {
+
+    database.update({ _id: req.body._id }, { $set: { status: req.body.status } }, (err, data) => {
         if (err) {
             res.status(400);
-
             return;
         }
 
@@ -81,8 +112,6 @@ app.post('/post-squeeze', (req, res) => {
             res.status(200);
         }
     })
-
-
 
 
 })

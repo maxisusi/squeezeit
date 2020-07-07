@@ -54,6 +54,10 @@ header, main {
 
 }
 
+.sub-menu {
+    list-style: none;
+}
+
 
 /* Card  */
 .card-handler {
