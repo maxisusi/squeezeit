@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const Datastore = require('nedb');
+require('dotenv').config();
 const app = express();
 
 const database = new Datastore('squeeze.db');
 database.loadDatabase();
 
-app.listen(1337, () => {
-    console.log('Listening to port 1337');
+const port = process.env.PORT || 1337;
+
+console.log(process.env.API_KEY);
+
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`);
 })
 
 app.use(cors());
