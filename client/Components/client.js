@@ -1,10 +1,11 @@
-const API_URL_GET_SQUEEZE = 'http://localhost:1337/get-squeeze';
 import  {displayCard}  from './displayElement.js';
 
+const API_URL_GET_SQUEEZE = 'http://localhost:1337/get-squeeze';
 
 const cardWrapper = document.querySelector('.card-handler');
 
 document.addEventListener('DOMContentLoaded', async () => {
+
 
     const response = await fetch(API_URL_GET_SQUEEZE);
     const data = await response.json();

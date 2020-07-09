@@ -1,3 +1,5 @@
+
+
 export function displayCard(data) {
 
     const cardWrapper = document.querySelector('.card-handler');
@@ -54,7 +56,6 @@ export function displayCard(data) {
 
     card.addEventListener('click', (event) => {
         
-
         let currentSelection = event.target;
     
         if (currentSelection.tagName == 'path')
@@ -65,7 +66,6 @@ export function displayCard(data) {
             header: {
                 'Content-Type': 'application/json'
             }
-    
         }
     
         let idea;
@@ -94,7 +94,7 @@ export function displayCard(data) {
     
     
         sendFeedback(validation);
-        console.log(validation);
+        location.reload();
     
     })
     
