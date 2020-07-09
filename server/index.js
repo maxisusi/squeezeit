@@ -1,23 +1,45 @@
 const express = require('express');
-const cors = require('cors');
-const Datastore = require('nedb');
-require('dotenv').config();
 const app = express();
+const cors = require('cors');
+const mongoose = require('mongoose');
+app.use(cors());
+app.use(express.json());
+app.use(express.static('client/index.html'))
+require('dotenv').config();
 
-const database = new Datastore('squeeze.db');
-database.loadDatabase();
 
 const port = process.env.PORT || 1337;
-
-console.log(process.env.API_KEY);
-
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);
 })
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static('client/index.html'))
+
+
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+
+}, (err) => {
+
+    if(err) {
+        console.log('There was an error');
+        console.log(err);
+    }
+    else {
+        console.log('Connected to database');
+    }
+});
+
+const squeezeSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    status: String,
+    dateCreated: Date,
+
+});
+
+const Squeeze = mongoose.model('Squeeze', squeezeSchema);
+
 
 app.get('/', (req, res) => {
     res.json({
@@ -28,7 +50,7 @@ app.get('/', (req, res) => {
 
 app.get('/get-liked-squeeze', (req, res) => {
     console.log('i have a request')
-    database.find({status: 'accepted'}, (err, data) => {
+    Squeeze.find({status: 'accepted'}, (err, data) => {
         if (err) {
             res.status(400);
             return;
@@ -38,12 +60,13 @@ app.get('/get-liked-squeeze', (req, res) => {
             res.json(data);
             console.log(data);
         }
-
     })
 })
+
+
 app.get('/get-disliked-squeeze', (req, res) => {
     console.log('i have a request')
-    database.find({status: 'rejected'}, (err, data) => {
+    Squeeze.find({status: 'rejected'}, (err, data) => {
         if (err) {
             res.status(400);
             return;
@@ -59,6 +82,7 @@ app.get('/get-disliked-squeeze', (req, res) => {
 
 app.post('/squeeze', (req, res) => {
 
+    console.log('I have a request');
     const data = req.body;
 
     if (isValidData(data)) {
@@ -71,7 +95,10 @@ app.post('/squeeze', (req, res) => {
             dateCreated: new Date(),
         }
 
-        database.insert(squeeze);
+        Squeeze.create(squeeze, (error, data) => {
+            if(error) {console.log("There is an error" + error)}
+            else {console.log("Good" + data)}
+        });
 
     } else {
         res.status(422).send();
@@ -86,7 +113,7 @@ app.post('/squeeze', (req, res) => {
 
 app.get('/get-squeeze', (req, res) => {
 
-    database.find({ status: 'default' }, (err, data) => {
+    Squeeze.find({ status: 'default' }, (err, data) => {
         if (err) {
             res.status(400);
             res.end();
@@ -106,7 +133,7 @@ app.post('/post-squeeze', (req, res) => {
     console.log(req.body.idea);
     console.log(req.body._id);
 
-    database.update({ _id: req.body._id }, { $set: { status: req.body.status } }, (err, data) => {
+    Squeeze.updateOne({ _id: req.body._id }, { $set: { status: req.body.status } }, (err, data) => {
         if (err) {
             res.status(400);
             return;
