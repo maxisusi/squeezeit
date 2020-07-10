@@ -1,157 +1,158 @@
 * {
-    padding: 0;
-    font-family: 'Raleway';
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    
-}
-
-h1, h2, h3 {
-    font-family: 'Fredoka One';
 }
 
 body {
-    background-color: #ED4C67;
+    font-family: 'Montserrat', sans-serif;
+    background: url('/client/assets/buuble.svg') bottom no-repeat;
+    height: 100vh;
+    background-position: 50% 132%;
 }
 
 .app {
-    margin-top: 3em;
-}
-.app-title {
-    font-size: 3rem;
+    width: 100%;
+    margin: 0 auto;
 }
 
-header, main {
+/* HEADER */
+
+header {
+    width: 100%;
+    height: 100px;
+    -webkit-box-shadow: -4px 18px 48px -15px rgba(0, 0, 0, 0.48);
+    -moz-box-shadow: -4px 18px 48px -15px rgba(0, 0, 0, 0.48);
+    box-shadow: -4px 18px 48px -15px rgba(0, 0, 0, 0.48);
+}
+
+.header-elements {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-
-}
-
-.main-menu {
-    list-style: none;
-    display: flex;
+    margin: 0 auto;
     justify-content: space-between;
-    margin-bottom: 5em;
-
-
-}
-.main-menu li {
-    margin: 1.5em;
+    align-items: center;
 }
 
-.main-menu li a {
-    text-decoration: none;
-    color: white;
-    
-}
-
-.main-menu li:hover {
-    cursor: pointer;
-    text-decoration: underline;
-
-}
-
-.sub-menu {
-    list-style: none;
-}
-
-
-/* Card  */
-.card-handler {
+.banner-band {
     width: 100%;
-    max-width: 450px;
-}
-.card {
-    color: black;
-    background-color: #dcdde1;
-    width: 100%;
-    border-radius: 2em;
-    margin-top: 2.5em;
-    padding: 2em;
+    height: 120px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(245, 116, 151);
+    background: linear-gradient(112deg, rgba(245, 116, 151, 1) 0%, rgba(235, 29, 66, 1) 100%);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.10);
+}
+
+.card-handler-title {
+    font-family: 'Fredoka One', cursive;
+    color: white;
+    font-size: 1.5em;
+}
+
+/* CARD CONTROLLER */
+
+.card-controller {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 100%;
+    padding: 2.3em;
+    margin-top: 3.5em;
+    display: flex;
+    justify-content: center;
     flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4em;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.06);
 }
 
-.vote-title{
-    text-align: center;
-    margin-bottom: 2em;
+.card-text-title {
+    font-weight: 700;
+    color: #17303A;
+    margin-bottom: 0.4em;
 }
 
-.card-description {
-    margin-bottom: 2em;
-    border-bottom: 1px solid #00000070;
-    padding-bottom: 1em;
-}
-.card-description h1 {
-    font-size: 3rem;
-    margin-bottom: 1em;
+.card-text-date {
+    font-size: 0.9rem;
+    color: #BABABA;
+    margin-bottom: 2.4em;
 }
 
-.vote {
+.card-text-desc {
+    font-weight: 300;
+    margin-bottom: 4em;
+    color: #17303A;
+}
+
+.card-vote {
     display: flex;
     justify-content: space-evenly;
-
 }
+
 .yes {
-    fill: #00b894;
+    fill: #50EEA5;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.yes:hover {
+    fill: #07f787;
 }
 
 .no {
-    fill: #d63031;
+    fill: #F15474;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Form update */
+.no:hover {
+    fill: #f41945;
+}
 
-.submit-form {
-    display: flex;
-    flex-direction: column;
+.separation-line {
+    width: 1px;
+    background-color: #D3D3D3;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 5em;
     width: 100%;
-    max-width: 450px;
-
+    display: flex;
+    justify-content: center;
+    display: relative;
 }
-.submit-form label {
-    margin-bottom: 1em;
+
+.bubble {
+    position: absolute;
+    z-index: -100;
+}
+
+.button {
+    background-color: #000;
     color: white;
-}
-
-.submit-form textarea {
-    resize: none;
-    height: 200px;
-
-}
-
-.submit-form input, textarea {
-    padding: 0.7em;
-    background-color: transparent;
-    border: 1px solid white;
-    border-radius: 0.5em;
-    margin-bottom: 2em;
-    color: white;
-    
-}
-
-input::placeholder , textarea::placeholder {
-    color: #ffffff83;
-}
-
-.btn-submit {
     padding: 1em;
-    background-color: #9980FA;
-    color: white;
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    font-size: 1.1rem;
+    border-radius: 3em;
     border: none;
-    border-radius: 0.5em;
-    font-size: 1rem;
-}
-
-.btn-submit:hover {
-    background-color: #FDA7DF;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
 
-
-
+.button:hover {
+    background-color: rgb(36, 36, 36);
+    padding-right: 2em;
+    padding-left: 2em;
+}
