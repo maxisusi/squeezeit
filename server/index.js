@@ -53,11 +53,13 @@ app.get('/get-liked-squeeze', (req, res) => {
     Squeeze.find({status: 'accepted'}, (err, data) => {
         if (err) {
             res.status(400);
-            return;
+            res.end();
+
         }
         else {
             res.status(200);
             res.json(data);
+            res.end();
             console.log(data);
         }
     })
@@ -69,11 +71,13 @@ app.get('/get-disliked-squeeze', (req, res) => {
     Squeeze.find({status: 'rejected'}, (err, data) => {
         if (err) {
             res.status(400);
+            res.end();
             return;
         }
         else {
             res.status(200);
             res.json(data);
+            res.end();
             console.log(data);
         }
 
@@ -98,10 +102,12 @@ app.post('/squeeze', (req, res) => {
         Squeeze.create(squeeze, (error, data) => {
             if(error) {console.log("There is an error" + error)}
             else {console.log("Good" + data)}
+            res.end();
         });
 
     } else {
         res.status(422).send();
+        res.end();
 
     }
 
@@ -117,12 +123,13 @@ app.get('/get-squeeze', (req, res) => {
         if (err) {
             res.status(400);
             res.end();
-            return;
+
         }
 
         else {
             res.status(200);
             res.json(data);
+            res.end();
         }
     })
 })
@@ -136,12 +143,14 @@ app.post('/post-squeeze', (req, res) => {
     Squeeze.updateOne({ _id: req.body._id }, { $set: { status: req.body.status } }, (err, data) => {
         if (err) {
             res.status(400);
+            res.end();
             return;
         }
 
         else {
             res.json(data);
             res.status(200);
+            res.end();
         }
     })
 
