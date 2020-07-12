@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     else {
         displayCard(data);
-
-        }
+    }
 
     console.log(data);
 

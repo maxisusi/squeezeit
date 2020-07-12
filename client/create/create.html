@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="create.css">
+    <title>Squeeze it</title>
+</head>
+
+<body>
+    <div class="util-container-phone">
+        <div class="menu-selector">
+            <ul class="menu-elements">
+                <li>Find Squeeze</li>
+                <li>Squeeze Lab</li>
+                <li>Create Squeeze</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="app">
+
+        <header>
+            <div class="header-elements">
+                <div><img src="/client/assets/Logo.png" class="main-logo"></div>
+                <div onclick="toogle()"><svg class="menu-button" xmlns="http://www.w3.org/2000/svg" width="5.059"
+                        height="20.237" viewBox="0 0 5.059 20.237">
+                        <path id="iconmonstr-menu-7"
+                            d="M5.059,11.53A2.53,2.53,0,1,1,2.53,9,2.529,2.529,0,0,1,5.059,11.53Zm7.589,0A2.53,2.53,0,1,1,10.118,9,2.529,2.529,0,0,1,12.648,11.53Zm7.589,0A2.53,2.53,0,1,1,17.707,9,2.529,2.529,0,0,1,20.237,11.53Z"
+                            transform="translate(14.059) rotate(90)" fill="#17303a" />
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <div class="banner-band">
+            <h2 class="card-handler-title">Create your Squeese</h2>
+        </div>
+
+        <form class="form-submit-squeeze">
+            <label>Title</label>
+            <input placeholder="Play with candles" name="title">
+            <label>Description</label>
+            <textarea placeholder="I want to have fun" name="description"></textarea>
+            <button class="button">Squeese 😈</button>
+        </form>
+
+    </div>
+    <script src="/client/Components/createContent.js"></script>
+    <script>
+        const menuG = document.querySelector('.menu-selector');
+        const menuButton = document.querySelector('.menu-button');
+        let state = 0;
+        menuG.style.transform = 'translateY(-100%)';
+
+        function toogle() {
+
+            if (state == 0) {
+                state = 1;
+                menuG.style.transform = 'translateY(0%)';
+            }
+            else {
+                state = 0;
+                menuG.style.transform = 'translateY(-100%)';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

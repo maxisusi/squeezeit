@@ -1,0 +1,40 @@
+.form-submit-squeeze {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 3.5em;
+
+}
+
+input, textarea {
+    resize: none;
+    padding: 1.2em;
+    border: 1.8px solid #17303A;
+    border-radius: 1em;
+    margin-bottom: 3.5em;
+    font-size: 0.8rem;
+
+
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+    opacity: 0.3;
+}
+
+textarea { 
+    height: 250px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: rem;
+}
+
+label {
+    margin-bottom: 0.4em;
+    margin-left: 0.5em;
+    opacity: 0.7;
+}
+

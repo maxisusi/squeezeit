@@ -1,0 +1,75 @@
+/* CARD CONTROLLER */
+
+.card-handler-title {
+    font-family: 'Fredoka One', cursive;
+    color: white;
+    font-size: 1.5em;
+}
+
+.card-controller {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 100%;
+    padding: 2.3em;
+    margin-top: 3.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4em;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-text-title {
+    font-weight: 700;
+    color: #17303A;
+    margin-bottom: 0.4em;
+}
+
+.card-text-date {
+    font-size: 0.9rem;
+    color: #BABABA;
+    margin-bottom: 2.4em;
+}
+
+.card-text-desc {
+    font-weight: 300;
+    margin-bottom: 4em;
+    color: #17303A;
+}
+
+.card-vote {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.yes {
+    fill: #50EEA5;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.yes:hover {
+    fill: #07f787;
+    transform: rotate(-20deg);
+}
+
+.no {
+    fill: #F15474;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.no:hover {
+    fill: #f41945;
+    transform: rotate(20deg);
+}
+
+.separation-line {
+    width: 1px;
+    background-color: #D3D3D3;
+}

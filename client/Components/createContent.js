@@ -1,4 +1,4 @@
-const squeezeForm = document.querySelector('form');
+const squeezeForm = document.querySelector('.form-submit-squeeze');
 const API_URL = 'http://localhost:1337/squeeze';
 
 squeezeForm.addEventListener('submit', async (event) => {
