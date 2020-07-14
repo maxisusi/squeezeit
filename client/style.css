@@ -11,6 +11,11 @@ body {
     background-position: 50% 132%;
 }
 
+a {
+    text-decoration: none;
+    color: #17303A;
+}
+
 .app {
     width: 100%;
     margin: 0 auto;
@@ -29,25 +34,22 @@ body {
     position: absolute;
     height: 100vh;
     width: 100%;
-
     background-color: #F4F4F4;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
     z-index: 700;
     transition: all 0.5s ease-in-out;
-
 }
 
+.vote-title {
+    text-align: center;
+    margin-top: 3.5em;
+}
 
-.menu-black-bg {
-
-    background-color: black;
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    opacity: 0;
-
+.button-link {
+    text-decoration: none;
+    color: white;
 }
 
 .menu-elements {
@@ -57,7 +59,6 @@ body {
     text-align: right;
     font-size: 1.8rem;
     margin-right: 2.3em;
-
     text-transform: uppercase;
 }
 
@@ -123,7 +124,6 @@ header {
 .menu-button:hover {
     cursor: pointer;
     transform: rotate(90deg);
-
 }
 
 .card-handler-title {

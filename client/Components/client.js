@@ -2,7 +2,7 @@ import  {displayCard}  from './displayElement.js';
 
 const API_URL_GET_SQUEEZE = 'http://localhost:1337/get-squeeze';
 
-const cardWrapper = document.querySelector('.card-handler');
+const cardWrapper = document.querySelector('.card-controller');
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('no data');
         const title = document.createElement('h1');
         title.classList.add('vote-title');
-        title.textContent = "There is no squeeze...Go create one!"
+        title.innerHTML = `There is no squeeze...<br/>Go create one!`
         cardWrapper.appendChild(title);
     }
     else {

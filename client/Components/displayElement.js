@@ -21,7 +21,7 @@ export function displayCard(data) {
 
     const cardTextDate = document.createElement('p');
     cardTextDate.classList.add('card-text-date');
-    cardTextDate.textContent = dateCreated;
+    cardTextDate.textContent = new Date(dateCreated);
 
     const cardTextDesc = document.createElement('p');
     cardTextDesc.classList.add('card-text-desc');
@@ -57,19 +57,12 @@ export function displayCard(data) {
     card.append(cardTextElement, cardVote);
     cardWrapper.appendChild(card);
 
-    card.addEventListener('click', (event) => {
+    cardVote.addEventListener('click', (event) => {
 
         let currentSelection = event.target;
 
         if (currentSelection.tagName == 'path')
             currentSelection = currentSelection.parentElement;
-
-        const options = {
-            method: 'POST',
-            header: {
-                'Content-Type': 'application/json'
-            }
-        }
 
         let idea;
         let status;
@@ -88,34 +81,35 @@ export function displayCard(data) {
                 break;
         }
 
-        const validation = {
-            status,
-            idea,
-            data,
-            _id
+        if(idea && status) {
+            let validation = {
+                status,
+                idea,
+                data,
+                _id
+            }
+            sendFeedback(validation);
+            location.reload(); 
         }
 
-        
-        //sendFeedback(validation);
-        //location.reload(); 
     })
 
-    // async function sendFeedback(data) {
-    //     const API_URL_POST_SQUEEZE = 'http://localhost:1337/post-squeeze';
-    //     const options = {
-    //         method: 'POST',
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     };
+    async function sendFeedback(data) {
+        const API_URL_POST_SQUEEZE = 'http://localhost:1337/post-squeeze';
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
 
-    //     const respone = await fetch(API_URL_POST_SQUEEZE, options);
-    //     const answer = await respone.json();
-    //     console.log(answer);
+        const respone = await fetch(API_URL_POST_SQUEEZE, options);
+        const answer = await respone.json();
+        console.log(answer);
 
 
-    // }
+    }
 
 }
 

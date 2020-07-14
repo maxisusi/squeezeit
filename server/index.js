@@ -142,12 +142,14 @@ app.post('/post-squeeze', (req, res) => {
 
     Squeeze.updateOne({ _id: req.body._id }, { $set: { status: req.body.status } }, (err, data) => {
         if (err) {
+            console.log('I fail to update the server');
             res.status(400);
             res.end();
             return;
         }
 
         else {
+            console.log('I have updated the server');
             res.json(data);
             res.status(200);
             res.end();
